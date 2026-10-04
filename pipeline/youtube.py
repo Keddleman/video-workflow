@@ -65,7 +65,7 @@ for gi, g in enumerate(TL['groups']):
 # ---- headline banners (left) ----
 for j, bn in enumerate(TL['banners']):
     col = bn.get('color', '#10B981'); fg = '#000' if col.upper() in ('#FACC15', '#FFFFFF', '#FDE047') else '#fff'
-    txt = bn['text'] if '<br>' in bn['text'] else bn['text'].replace(' ', '<br>', 1) if len(bn['text']) > 14 else bn['text']
+    txt = bn['text']
     H.append(f'<div class="ban" id="b{j}"><span class="pill" style="background:{col};color:{fg}">{bn["label"]}</span><div class="bt">{txt}</div></div>')
     js(f"tl.fromTo('#b{j}',{{autoAlpha:0,x:-60}},{{autoAlpha:1,x:0,duration:.35,ease:'power3.out'}},{bn['t_in']})")
     js(f"tl.to('#b{j}',{{autoAlpha:0,x:-60,duration:.25}},{bn['t_out']-.25})")
@@ -95,7 +95,8 @@ for j, s in enumerate(TL['steps']):
 # ---- CTA slams ----
 if TL['slams']:
     big = TL.get("cta_big") or KW; bs = min(150, int(560 / max(1, len(big)) * 1.6))
-    H.append(f'<div id="cta" style="--bs:{bs}px"><small>{TL.get("cta_top","COMMENT")}</small><big>{TL.get("cta_big") or KW}</big><em>{TL["cta_line"]}</em></div>')
+    ss = min(52, int(580 / max(1, len(TL.get("cta_top", "COMMENT"))) * 1.45))
+    H.append(f'<div id="cta" style="--bs:{bs}px;--ss:{ss}px"><small>{TL.get("cta_top","COMMENT")}</small><big>{TL.get("cta_big") or KW}</big><em>{TL["cta_line"]}</em></div>')
 for a, b in TL['slams']:
     js(f"tl.fromTo('#cta',{{autoAlpha:0,scale:2.2}},{{autoAlpha:1,scale:1,duration:.22,ease:'back.out(1.6)',immediateRender:false}},{a})")
     js(f"tl.fromTo('#flash',{{autoAlpha:.6}},{{autoAlpha:0,duration:.3,immediateRender:false}},{a})")
