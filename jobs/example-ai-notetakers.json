@@ -1,0 +1,15 @@
+{
+  "_doc": "Per-video settings. Everything except keyword is optional. Times are seconds in the source video. Upload URLs and the source video URL are passed at run time, never committed.",
+  "keyword": "FILTER",
+  "cta_line": "GET THE FREE SKILL",
+  "chips": [{"text": "MCP", "when": "mcp"}, {"text": "WORKS IN", "when": "works in", "bg": "#FFFFFF"}],
+  "banners": [
+    {"t_in": 24.5, "t_out": 31.0, "label": "THE PROBLEM", "color": "#EF4444", "text": "Summaries of summaries"},
+    {"t_in": 31.0, "t_out": 43.86, "label": "THE FIX", "color": "#10B981", "text": "A skill that distills it"},
+    {"t_in": 43.86, "t_out": 48.6, "label": "THE FIX", "color": "#10B981", "text": "Only what matters to you"},
+    {"t_in": 48.7, "t_out": 51.85, "label": "100% FREE", "color": "#FACC15", "text": "The FILTER skill"}
+  ],
+  "cards": {"t_in": 25.9, "titles": ["SUMMARY", "NEXT STEPS", "RECAP", "ACTION ITEMS", "NOTES"], "collapse": 32.72,
+            "result_in": 34.0, "result_out": 48.5, "result_title": "WHAT MATTERS", "result_sub": "to you. Nothing else."},
+  "steps": [{"t": 63.26, "text": "Comment <b>FILTER</b>"}, {"t": 64.0, "text": "Download the skill"}, {"t": 64.64, "text": "Upload it into <b>Claude</b>"}]
+}

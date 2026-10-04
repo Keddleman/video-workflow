@@ -1,0 +1,6 @@
+work/
+*.mp4
+*.mov
+*.wav
+logos/
+__pycache__/
