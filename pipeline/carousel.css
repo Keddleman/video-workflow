@@ -1,0 +1,29 @@
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#0B0B10}
+#root{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Montserrat,Inter,sans-serif;font-weight:800;color:#fff}
+.bg{position:absolute;inset:0;background-color:#0B0B10;background-image:radial-gradient(circle at 50% 38%,rgba(250,204,21,.16),rgba(0,0,0,0) 55%),radial-gradient(rgba(255,255,255,.07) 2px,transparent 2.5px);background-size:100% 100%,36px 36px}
+.slide{position:absolute;inset:0;padding:110px 80px 0;text-align:center}
+.hdr{position:absolute;left:60px;right:60px;top:44px;display:flex;justify-content:space-between;font-size:30px;color:rgba(255,255,255,.75);visibility:hidden}
+.pill{display:inline-block;margin-top:40px;font-size:36px;padding:.25em .9em;border-radius:99px;border:4px solid #fff;visibility:hidden}
+.title{margin-top:34px;font-size:92px;line-height:1.04;letter-spacing:-.01em;text-shadow:0 8px 30px rgba(0,0,0,.6);visibility:hidden}
+.sub{margin-top:26px;font-size:42px;line-height:1.25;color:rgba(255,255,255,.85);font-weight:700;visibility:hidden}
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:56px 46px;margin:80px auto 0;max-width:760px}
+.row,.pair{display:flex;justify-content:center;gap:120px;margin-top:90px}
+.pair{gap:200px;margin-top:150px}
+.lg{display:inline-flex;flex-direction:column;align-items:center;visibility:hidden}
+.ic{background:#fff;border:6px solid #fff;overflow:hidden;box-shadow:0 0 50px 6px var(--c),0 18px 40px rgba(0,0,0,.6)}
+.ic img{width:100%;height:100%;object-fit:contain}
+.lab{margin-top:16px;padding:.25em .9em;border-radius:99px;background:rgba(12,12,22,.92);border:4px solid var(--c);white-space:nowrap}
+.wire{position:absolute;left:0;top:0;visibility:hidden}.wire path{fill:none;stroke:#7FE6FF;stroke-width:8;stroke-dasharray:24 22;stroke-linecap:round;filter:drop-shadow(0 0 8px #22D3EE)}
+.chip{position:absolute;left:540px;top:1075px;transform:translate(-50%,-50%);font-size:52px;padding:.25em .95em;border-radius:99px;background:#22D3EE;color:#000;border:5px solid #fff;box-shadow:0 0 40px rgba(34,211,238,.7);visibility:hidden}
+.card{position:absolute;width:200px;height:250px;background:rgba(250,250,252,.96);border-radius:16px;padding:0 18px;box-shadow:0 14px 30px rgba(0,0,0,.55);visibility:hidden;overflow:hidden;text-align:left}
+.card h4{margin:0 -18px 18px;padding:14px;background:#3C4050;color:#fff;font-size:21px;text-align:center}
+.card i{display:block;height:12px;border-radius:6px;background:#B9BECD;margin-bottom:14px}
+.gold{position:absolute;left:190px;top:600px;width:700px;padding:46px 30px;border-radius:44px;background:linear-gradient(#FFE650,#FF9F1C);border:9px solid #fff;box-shadow:0 0 80px rgba(255,200,40,.8);color:#1a1000;visibility:hidden}
+.star{font-size:130px;line-height:1}.gold h3{font-size:84px;margin-top:8px}.gold p{font-size:42px;margin-top:8px}
+.bubble{position:relative;margin:90px auto 0;width:860px;padding:44px 0 50px;border-radius:60px;background:linear-gradient(#FFE650,#FF961E);border:10px solid #fff;box-shadow:0 0 90px rgba(255,190,40,.85);color:#000;visibility:hidden}
+.bubble:after{content:"";position:absolute;left:140px;bottom:-62px;border:34px solid transparent;border-top:44px solid #fff}
+.bubble small{display:block;font-size:64px;color:#2a1a00}.bubble big{display:block;font-size:200px;line-height:1}.bubble em{display:block;font-style:normal;font-size:44px;margin-top:10px;color:#4a2800}
+.note{margin-top:110px;font-size:46px;color:#fff;visibility:hidden}
+.swipe{position:absolute;right:70px;bottom:70px;font-size:40px;color:ACC;visibility:hidden}.swipe b{display:inline-block}
+#flash{position:absolute;inset:0;background:#fff;visibility:hidden;pointer-events:none}

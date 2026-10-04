@@ -94,5 +94,30 @@ PY
   fi
   log "ALL DONE"
   ;;
+carousel)
+  # bash run.sh carousel <workdir> <carousel.json>  -> slides/slide_N.mp4 + slide_N.jpg, carousel_preview.mp4, carousel.zip
+  WD="$2"; CJ="$3"; mkdir -p "$WD/cz/logos"; cd "$WD"
+  need_hyperframes
+  [ -f cz/hyperframes.json ] || { $HF init czp --example blank --non-interactive --skip-transcribe >/dev/null 2>&1; cp czp/hyperframes.json czp/meta.json czp/package.json cz/ 2>/dev/null; rm -rf czp; }
+  for k in $(python3 -c "import json;c=json.load(open('$CJ'));s=set();[s.update(x.get('logos',[])+[x.get('left',''),x.get('right','')]) for x in c['slides']];print(' '.join(k for k in s if k))"); do
+    d=$(python3 -c "import json;print(json.load(open('$REPO/brands.json'))['$k']['domain'])")
+    [ -s "cz/logos/$d.png" ] || curl -sL -o "cz/logos/$d.png" "https://www.google.com/s2/favicons?domain=$d&sz=256"
+  done
+  python3 "$P/carousel.py" "$CJ" cz | tee -a status.log
+  log "rendering carousel…"
+  (cd cz && rm -rf work-* && $HF render -q looks --sdr --no-low-memory-mode -w ${HFW:-3} -o ../carousel_preview.mp4 > ../cz_render.log 2>&1) || { tail -5 cz_render.log | tee -a status.log; exit 1; }
+  SEC=$(python3 -c "import json;print(json.load(open('$CJ')).get('seconds',5))"); N=$(python3 -c "import json;print(len(json.load(open('$CJ'))['slides']))")
+  rm -rf slides && mkdir slides
+  for i in $(seq 0 $((N-1))); do
+    ffmpeg -v error -y -ss $((i*SEC)) -i carousel_preview.mp4 -t $SEC -c:v libx264 -crf 16 -pix_fmt yuv420p -an -movflags +faststart slides/slide_$((i+1)).mp4
+    ffmpeg -v error -y -ss $(python3 -c "print($((i+1))*$SEC-0.15)") -i carousel_preview.mp4 -frames:v 1 -q:v 2 slides/slide_$((i+1)).jpg
+  done
+  (cd slides && zip -q -r ../carousel.zip .)
+  U=$(python3 -c "import json;print(json.load(open('$CJ')).get('zip_upload',''))")
+  [ -n "$U" ] && curl -f -s -o /dev/null -w "zip PUT %{http_code}\n" -X PUT -H "Content-Type: application/zip" -H "If-None-Match: *" --upload-file carousel.zip "$U" | tee -a status.log || true
+  U=$(python3 -c "import json;print(json.load(open('$CJ')).get('preview_upload',''))")
+  [ -n "$U" ] && curl -f -s -o /dev/null -w "preview PUT %{http_code}\n" -X PUT -H "Content-Type: video/mp4" -H "If-None-Match: *" --upload-file carousel_preview.mp4 "$U" | tee -a status.log || true
+  log "CAROUSEL DONE $N slides"
+  ;;
 *) echo "unknown command $CMD"; exit 2;;
 esac

@@ -1,0 +1,78 @@
+{
+ "handle": "@textagent.io",
+ "seconds": 5,
+ "slides": [
+  {
+   "type": "logos",
+   "pill": "AI NOTE TAKERS",
+   "title": "Which one do you use?",
+   "logos": [
+    "granola",
+    "fireflies",
+    "fathom",
+    "otter",
+    "teams"
+   ],
+   "footer": "Swipe"
+  },
+  {
+   "type": "connect",
+   "title": "They all plug into Claude or ChatGPT",
+   "left": "claude",
+   "right": "chatgpt",
+   "chip": "MCP"
+  },
+  {
+   "type": "cards",
+   "pill": "THE PROBLEM",
+   "pill_color": "#EF4444",
+   "title": "Summaries of summaries",
+   "sub": "It just gives you more of a summary.",
+   "titles": [
+    "SUMMARY",
+    "NEXT STEPS",
+    "RECAP",
+    "ACTION ITEMS",
+    "NOTES",
+    "SUMMARY",
+    "RECAP",
+    "NEXT STEPS"
+   ]
+  },
+  {
+   "type": "cards",
+   "pill": "THE FIX",
+   "pill_color": "#10B981",
+   "title": "A skill that distills it down",
+   "titles": [
+    "SUMMARY",
+    "NEXT STEPS",
+    "RECAP",
+    "ACTION ITEMS",
+    "NOTES",
+    "SUMMARY"
+   ],
+   "result": {
+    "title": "WHAT MATTERS",
+    "sub": "to you. Nothing else."
+   }
+  },
+  {
+   "type": "text",
+   "pill": "100% FREE",
+   "title": "The FILTER skill",
+   "sub": "Works in",
+   "logos": [
+    "chatgpt",
+    "claude"
+   ]
+  },
+  {
+   "type": "cta",
+   "top": "COMMENT",
+   "big": "FILTER",
+   "line": "I'LL DM IT TO YOU",
+   "note": "Free. Download it, upload it into Claude."
+  }
+ ]
+}
