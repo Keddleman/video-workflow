@@ -94,7 +94,8 @@ for j, s in enumerate(TL['steps']):
 
 # ---- CTA slams ----
 if TL['slams']:
-    H.append(f'<div id="cta"><small>{TL.get("cta_top","COMMENT")}</small><big>{KW}</big><em>{TL["cta_line"]}</em></div>')
+    big = TL.get("cta_big") or KW; bs = min(150, int(560 / max(1, len(big)) * 1.6))
+    H.append(f'<div id="cta" style="--bs:{bs}px"><small>{TL.get("cta_top","COMMENT")}</small><big>{TL.get("cta_big") or KW}</big><em>{TL["cta_line"]}</em></div>')
 for a, b in TL['slams']:
     js(f"tl.fromTo('#cta',{{autoAlpha:0,scale:2.2}},{{autoAlpha:1,scale:1,duration:.22,ease:'back.out(1.6)',immediateRender:false}},{a})")
     js(f"tl.fromTo('#flash',{{autoAlpha:.6}},{{autoAlpha:0,duration:.3,immediateRender:false}},{a})")

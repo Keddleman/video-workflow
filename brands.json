@@ -52,5 +52,6 @@
   "tiktok":      {"name": "TikTok",      "domain": "tiktok.com",           "color": "#25F4EE", "aliases": ["tiktok", "tik tok"]},
   "airtable":    {"name": "Airtable",    "domain": "airtable.com",         "color": "#FCB400", "aliases": ["airtable"]},
   "supabase":    {"name": "Supabase",    "domain": "supabase.com",         "color": "#3ECF8E", "aliases": ["supabase"]},
+  "textmyagent": {"name": "TextMyAgent", "domain": "textmyagent.com",   "color": "#34C759", "aliases": ["textmyagent", "text my agent", "text to my agent"], "icon": "chat"},
   "aws":         {"name": "AWS",         "domain": "aws.amazon.com",       "color": "#FF9900", "aliases": ["aws"]}
 }

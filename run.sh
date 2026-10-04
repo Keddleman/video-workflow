@@ -61,7 +61,8 @@ PY
   for d in $(python3 -c "import json;print(' '.join(b['domain'] for b in json.load(open('timeline.json'))['brands'].values()))"); do
     [ -s "logos/$d.png" ] || curl -sL -o "logos/$d.png" "https://www.google.com/s2/favicons?domain=$d&sz=256"
   done
-  need_py; python3 "$P/sfx.py" timeline.json sfx.wav >/dev/null
+  need_py; python3 "$P/icons.py" timeline.json logos | tee -a status.log
+  python3 "$P/sfx.py" timeline.json sfx.wav >/dev/null
   AI=$(audio_index src.mp4)
   mux() {  # mux <video> <out>
     ffmpeg -v error -y -i "$1" -i src.mp4 -i sfx.wav -filter_complex \

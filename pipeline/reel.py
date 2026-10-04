@@ -203,9 +203,11 @@ def make_cta():
     grad = np.zeros((im.size[1], im.size[0], 4), np.uint8)
     grad[..., :3] = (np.array([255, 230, 80]) * (1 - gy) + np.array([255, 150, 30]) * gy).astype(np.uint8)
     grad[..., 3] = np.array(m); im.alpha_composite(Image.fromarray(grad))
-    d = ImageDraw.Draw(im); kw = TL['keyword'] or 'NOW'
+    d = ImageDraw.Draw(im); kw = TL.get('cta_big') or TL['keyword'] or 'NOW'
     d.rounded_rectangle([pad, pad, pad + w, pad + h], 60, outline=(255, 255, 255, 255), width=10)
-    d.text((pad + w / 2, pad + 85), TL.get('cta_top', 'COMMENT'), font=font(66), fill=(30, 20, 0, 255), anchor='mm')
+    tsz = 66
+    while d.textlength(TL.get('cta_top', 'COMMENT'), font=font(tsz)) > w - 80: tsz -= 4
+    d.text((pad + w / 2, pad + 85), TL.get('cta_top', 'COMMENT'), font=font(tsz), fill=(30, 20, 0, 255), anchor='mm')
     ksz = 178
     while d.textlength(kw, font=font(ksz)) > w - 80: ksz -= 8
     d.text((pad + w / 2, pad + 215), kw, font=font(ksz), fill=(0, 0, 0, 255), anchor='mm')

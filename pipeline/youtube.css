@@ -22,7 +22,7 @@
 .step span{display:inline-flex;align-items:center;justify-content:center;width:76px;height:76px;margin-right:22px;border-radius:50%;background:#FACC15;color:#000;font-size:44px;border:4px solid #fff;vertical-align:middle}
 .step b{color:#FACC15}
 #cta{position:absolute;left:960px;top:880px;width:660px;margin-left:-330px;margin-top:-150px;padding:26px 0 30px;text-align:center;border-radius:46px;background:linear-gradient(#FFE650,#FF961E);border:9px solid #fff;box-shadow:0 0 80px rgba(255,190,40,.85);visibility:hidden;color:#000}
-#cta small{display:block;font-size:52px;color:#2a1a00}#cta big{display:block;font-size:150px;line-height:1}#cta em{display:block;font-style:normal;font-size:36px;color:#4a2800}
+#cta small{display:block;font-size:52px;color:#2a1a00}#cta big{display:block;font-size:var(--bs,150px);line-height:1;white-space:nowrap}#cta em{display:block;font-style:normal;font-size:36px;color:#4a2800}
 .cap{position:absolute;left:260px;width:1400px;top:930px;text-align:center;font-size:72px;color:#fff;visibility:hidden;-webkit-text-stroke:9px #000;paint-order:stroke fill;text-shadow:0 8px 22px rgba(0,0,0,.7)}
 .cap .kf{background:#FACC15;color:#000;-webkit-text-stroke:0;padding:0 .2em;border-radius:14px}
 #flash{position:absolute;inset:0;background:#fff;visibility:hidden;pointer-events:none}

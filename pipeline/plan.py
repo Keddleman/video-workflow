@@ -123,6 +123,8 @@ def plan(words, job, brands):
                 prev = ' '.join(norm(x[2]) for x in words[max(0, i - 2):i])
                 if 'comment' in prev or not job.get('comment_required', True):
                     slams.append(w[0])
+    slams += job.get('cta_at', [])                   # explicit CTA times, e.g. "text the number below"
+    slams.sort()
     windows = []
     for i, t in enumerate(slams):
         end = dur + 1 if (i == len(slams) - 1 and dur - t < 12) else t + job.get('slam_hold', 3.0)
@@ -135,11 +137,11 @@ def plan(words, job, brands):
     return {
         'duration': round(dur, 3), 'fps': 30,
         'keyword': job.get('keyword', '').upper(), 'cta_line': job.get('cta_line', 'GET THE FREE SKILL'),
-        'cta_top': job.get('cta_top', 'COMMENT'),
+        'cta_top': job.get('cta_top', 'COMMENT'), 'cta_big': job.get('cta_big', job.get('keyword', '')).upper(),
         'words': words, 'groups': groups, 'slams': windows,
         'banners': job.get('banners', []), 'steps': job.get('steps', []), 'cards': job.get('cards'),
         'zooms': zooms,
-        'brands': {k: {**{x: brands[k][x] for x in ('name', 'domain', 'color')}, 'caption': lighten(brands[k]['color'])}
+        'brands': {k: {**{x: brands[k][x] for x in ('name', 'domain', 'color')}, 'icon': brands[k].get('icon', ''), 'caption': lighten(brands[k]['color'])}
                    for k in used},
     }
 
