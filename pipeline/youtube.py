@@ -119,9 +119,10 @@ if cur: chunks.append(cur)
 for j, c in enumerate(chunks):
     st = words[c[0]][0]; en = words[c[-1]][1] + .5
     if j + 1 < len(chunks): en = min(en, words[chunks[j + 1][0]][0])
-    if in_cta(st): continue
+    if in_cta(st) or any(0 <= a - st < 0.4 for a, b in TL['slams']): continue   # starts in/just before a CTA
     for a, b in TL['slams']:
         if st < a < en: en = a
+    if en < st + 0.15: continue   # too short to show; also keeps the hide after the pop-in tween
     spans = []
     for n, i in enumerate(c):
         tk = clean(words[i][2]); key = tk.strip('?!').replace("'S", '')
